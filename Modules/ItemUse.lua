@@ -484,7 +484,7 @@ end
 function EMA:CheckForQuestItemAndAddToBar()	
 	if EMAPrivate.Core.isEmaClassicBccBuild() == true then
 		for bag = 0, NUM_BAG_SLOTS do
-			for slot = 1, GetContainerNumSlots(bag) do
+			for slot = 1, C_Container.GetContainerNumSlots(bag) do
 				local itemLink = GetContainerItemLink(bag, slot)
 				if itemLink and itemLink:match("item:%d") then
 					local name, itemLink,_,_,_,itemType,questItem = GetItemInfo( itemLink )
@@ -614,7 +614,7 @@ end
 function EMA:IsInInventory(itemID)
 	local InBags = false
 	for bagID = 0, NUM_BAG_SLOTS do
-		for slotID = 1,GetContainerNumSlots( bagID ),1 do 
+		for slotID = 1,C_Container.GetContainerNumSlots( bagID ),1 do 
 			--EMA:Print( "Bags OK. checking", itemLink )
 			local item = Item:CreateFromBagAndSlot(bagID, slotID)
 			if ( item ) then
